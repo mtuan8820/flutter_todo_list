@@ -11,12 +11,6 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
 
-  List toDoList = [
-    ["sleep",false,],
-    ["wake up",false,],
-    ["code",false,],
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

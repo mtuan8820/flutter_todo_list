@@ -10,9 +10,15 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+
+  List toDoList = [
+    ["sleep",false,],
+    ["wake up",false,],
+    ["code",false,],
+  ];
+
   @override
   Widget build(BuildContext context) {
-    const toDoInput = ToDoInput();
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
@@ -20,11 +26,16 @@ class _HomeViewState extends State<HomeView> {
       ),
       // ignore: avoid_unnecessary_containers
       body: Container(
-        child: const Column(
-          children: [
+        child: Column(
+          children: <Widget>[
             ToDoInput(),
-            ToDoList()
-          ],
+            Expanded(
+              child: SizedBox(
+                height: 200,
+                child: ToDoList(),
+              ),
+            )
+          ]
         ),
       ),
     );

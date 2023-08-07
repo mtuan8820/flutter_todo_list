@@ -1,10 +1,14 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
-class ToDoTask extends StatelessWidget {
+// ignore: must_be_immutable
+class ToDoTask extends StatefulWidget {
   final String taskTitle;
   final bool isChecked;
   Function(bool?) checkTaskHandler;
   Function(BuildContext?) deleteTaskHandler;
+  Function(String?) editTaskHandler;
 
   ToDoTask({
     super.key,
@@ -12,10 +16,18 @@ class ToDoTask extends StatelessWidget {
     required this.isChecked,
     required this.checkTaskHandler,
     required this.deleteTaskHandler,
+    required this.editTaskHandler,
   });
 
   @override
+  State<ToDoTask> createState() => _ToDoTaskState();
+}
+
+class _ToDoTaskState extends State<ToDoTask> {
+  bool isEditable=false;
+  @override
   Widget build(BuildContext context) {
+    
     return Container(
       margin: const EdgeInsets.all(12),
       padding: const EdgeInsets.all(12),
@@ -26,22 +38,43 @@ class ToDoTask extends StatelessWidget {
       child: Row(
         children: [
           Checkbox(
-            value: isChecked,
-            onChanged: checkTaskHandler,
+            value: widget.isChecked,
+            onChanged: widget.checkTaskHandler,
           ),
-          Text(
-            taskTitle,
-            style: TextStyle(
-                decoration: isChecked
-                    ? TextDecoration.lineThrough
-                    : TextDecoration.none),
+          Expanded(
+            child:
+            !isEditable?
+            Text(
+              widget.taskTitle,
+              style: TextStyle(
+                  decoration: widget.isChecked
+                      ? TextDecoration.lineThrough
+                      : TextDecoration.none),
+            ): 
+            TextFormField(
+              initialValue: widget.taskTitle,
+              textInputAction: TextInputAction.done,
+              onFieldSubmitted: (value){
+                print(value);
+                widget.editTaskHandler(value);
+                isEditable = false;
+              },
+            )
+          )
+          ,
+          IconButton(
+            icon: Icon(Icons.edit),
+            onPressed: () => setState(() {
+              isEditable = true;
+            }),
           ),
           IconButton(
             icon: Icon(Icons.delete),
-            onPressed: () => deleteTaskHandler(context),
+            onPressed: () => widget.deleteTaskHandler(context),
           ),
         ],
       ),
     );
   }
+  
 }

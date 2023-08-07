@@ -44,6 +44,13 @@ class _ToDoListState extends State<ToDoList> {
     });
   }
 
+  void editTask(title,index){
+      setState(() {
+      toDoList[index] = [title, false,];
+      _saveToStorage();
+    });
+  }
+
   // @override
   // void initState(){
   //   // init the list on first time using app
@@ -85,6 +92,7 @@ class _ToDoListState extends State<ToDoList> {
                 isChecked: toDoList[index][1],
                 checkTaskHandler: (event) => checkTaskHandler(index),
                 deleteTaskHandler: (context) => deleteTask(index),
+                editTaskHandler: (title) => editTask(title,index),
               ),
               index: index,
             );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/views/home/home_view.dart';
-import 'package:localstorage/localstorage.dart';
 void main(){
   runApp(const MyApp());
 }

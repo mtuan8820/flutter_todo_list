@@ -23,24 +23,24 @@ class _ToDoListState extends State<ToDoList> {
     // print(jsonDecode(storage.getItem('todos')));
   }
 
-  void checkTaskHandler(int index){
+  void checkTaskHandler(int index) {
     setState(() {
       toDoList[index][1] = !toDoList[index][1];
-    _saveToStorage();
+      _saveToStorage();
     });
   }
 
-  void createNewTask(title){
+  void createNewTask(title) {
     setState(() {
       toDoList.add([title, false]);
-    _saveToStorage();
+      _saveToStorage();
     });
   }
 
-  void deleteTask(index){
+  void deleteTask(index) {
     setState(() {
       toDoList.removeAt(index);
-    _saveToStorage();
+      _saveToStorage();
     });
   }
 
@@ -59,7 +59,7 @@ class _ToDoListState extends State<ToDoList> {
   //   }
   //   super.initState();
   // }
-  
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -72,17 +72,27 @@ class _ToDoListState extends State<ToDoList> {
         }
         var items = storage.getItem('todos');
         if (items != null) {
-         toDoList = jsonDecode(items);
+          toDoList = jsonDecode(items);
         }
-        return ListView.builder(
+        return ReorderableListView.builder(
+          buildDefaultDragHandles: false,
           itemCount: toDoList.length,
           itemBuilder: (context, index) {
-            return ToDoTask(
-              taskTitle: toDoList[index][0],
-              isChecked: toDoList[index][1],
-              checkTaskHandler: (event) => checkTaskHandler(index),
-              deleteTaskHandler: (context) => deleteTask(index),
+            return ReorderableDragStartListener(
+              key: ValueKey(index),
+              child: ToDoTask(
+                taskTitle: toDoList[index][0],
+                isChecked: toDoList[index][1],
+                checkTaskHandler: (event) => checkTaskHandler(index),
+                deleteTaskHandler: (context) => deleteTask(index),
+              ),
+              index: index,
             );
+          },
+          onReorder: (oldIndex, newIndex) {
+            if (newIndex > oldIndex) newIndex--;
+            final item = toDoList.removeAt(oldIndex);
+            toDoList.insert(newIndex, item);
           },
         );
       },

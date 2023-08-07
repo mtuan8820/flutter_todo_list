@@ -51,16 +51,16 @@ https://github.com/mtuan8820/flutter_todo_list/assets/114607104/a03a8fe4-ee7e-48
 * You can click on Delete icon to delete task.
 * You can click on Edit icon to start edit task and press Enter to finish.
 * You can click on checkbox to mark your task completed or not.
-Video demo:<br />
+<br /> Video demo:<br />
 https://github.com/mtuan8820/flutter_todo_list/assets/114607104/cf1367ef-c4c5-4ab5-8ba9-31048124e60f
 
 3. Reorder tasks
 You can drag and drop to reorder the task
-Video demo:<br />
+<br />Video demo:<br />
 https://github.com/mtuan8820/flutter_todo_list/assets/114607104/61ed7ce6-dfde-4058-ae73-9ff836f64b07
 
-4. Data persistence on refresh/restart
-Video demo:<br />
+4. Data persistence on refresh/restart 
+<br />Video demo:<br />
 https://github.com/mtuan8820/flutter_todo_list/assets/114607104/7900cd26-06d8-4db3-842b-9c5569c155c5
 
 

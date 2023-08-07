@@ -41,21 +41,29 @@ If you got trouble, you can try `flutter doctor` in termnial and follow the inst
 
 ## Usages
 1. Create new task <br />
-Click on the text field to start, type your task then press Enter
-<video src='https://github.com/mtuan8820/flutter_todo_list/assets/114607104/a69d42cf-3910-4c00-a818-0b56bf03a255' width=50/>
+Click on the text field to start, type your task then press Enter<br />
+Video demo:<br />
+https://github.com/mtuan8820/flutter_todo_list/assets/114607104/a03a8fe4-ee7e-48af-90fb-3fc3800219ef
+
+
 
 2. Edit and delete task <br />
 * You can click on Delete icon to delete task.
 * You can click on Edit icon to start edit task and press Enter to finish.
 * You can click on checkbox to mark your task completed or not.
-<video src='https://github.com/mtuan8820/flutter_todo_list/assets/114607104/a69d42cf-3910-4c00-a818-0b56bf03a255' width=50/>
+Video demo:<br />
+https://github.com/mtuan8820/flutter_todo_list/assets/114607104/cf1367ef-c4c5-4ab5-8ba9-31048124e60f
 
 3. Reorder tasks
 You can drag and drop to reorder the task
-<video src='https://github.com/mtuan8820/flutter_todo_list/assets/114607104/6e46b4c8-c1c7-4800-bea9-d78fd9ee724e' width=50/>
+Video demo:<br />
+https://github.com/mtuan8820/flutter_todo_list/assets/114607104/61ed7ce6-dfde-4058-ae73-9ff836f64b07
 
 4. Data persistence on refresh/restart
-<video src='https://github.com/mtuan8820/flutter_todo_list/assets/114607104/fee91dae-aaf8-4929-84d0-f978d2123c0a' width=50/>
+Video demo:<br />
+https://github.com/mtuan8820/flutter_todo_list/assets/114607104/7900cd26-06d8-4db3-842b-9c5569c155c5
+
+
 
 
 

@@ -6,6 +6,7 @@ Simple To-do web application with Flutter
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
+* [Usages](#usages)
 ## General info
 This project is a simple "to-do list" web application with 3 basic features:
 * Ability to add tasks and delete them

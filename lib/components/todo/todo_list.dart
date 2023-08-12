@@ -31,6 +31,7 @@ class _ToDoListState extends State<ToDoList> {
   }
 
   void createNewTask(title) {
+    if( title == "") return;
     setState(() {
       toDoList.add([title, false]);
       _saveToStorage();
@@ -45,6 +46,7 @@ class _ToDoListState extends State<ToDoList> {
   }
 
   void editTask(title,index){
+      if( title == "") return;
       setState(() {
       toDoList[index] = [title, false,];
       _saveToStorage();

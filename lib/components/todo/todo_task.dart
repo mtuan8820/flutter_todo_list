@@ -24,10 +24,17 @@ class ToDoTask extends StatefulWidget {
 }
 
 class _ToDoTaskState extends State<ToDoTask> {
-  bool isEditable=false;
+  bool isEditable = false;
+
+  late FocusNode gfgFocusNode;
+  @override
+  void initState() {
+    super.initState();
+    gfgFocusNode = FocusNode();
+  }
+
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       margin: const EdgeInsets.all(12),
       padding: const EdgeInsets.all(12),
@@ -42,30 +49,35 @@ class _ToDoTaskState extends State<ToDoTask> {
             onChanged: widget.checkTaskHandler,
           ),
           Expanded(
-            child:
-            !isEditable?
-            Text(
-              widget.taskTitle,
-              style: TextStyle(
-                  decoration: widget.isChecked
-                      ? TextDecoration.lineThrough
-                      : TextDecoration.none),
-            ): 
-            TextFormField(
-              initialValue: widget.taskTitle,
-              textInputAction: TextInputAction.done,
-              onFieldSubmitted: (value){
-                print(value);
-                widget.editTaskHandler(value);
-                isEditable = false;
-              },
-            )
-          )
-          ,
+              child: !isEditable
+                  ? GestureDetector(
+                      child: Text(
+                        widget.taskTitle,
+                        style: TextStyle(
+                            decoration: widget.isChecked
+                                ? TextDecoration.lineThrough
+                                : TextDecoration.none),
+                      ),
+                      onDoubleTap: () => setState(() {
+                        isEditable = true;
+                        gfgFocusNode.requestFocus();
+                      }),
+                    )
+                  : TextFormField(
+                      initialValue: widget.taskTitle,
+                      textInputAction: TextInputAction.done,
+                      focusNode: gfgFocusNode,
+                      onFieldSubmitted: (value) {
+                        print(value);
+                        widget.editTaskHandler(value);
+                        isEditable = false;
+                      },
+                    )),
           IconButton(
             icon: Icon(Icons.edit),
             onPressed: () => setState(() {
               isEditable = true;
+              gfgFocusNode.requestFocus();
             }),
           ),
           IconButton(
@@ -76,5 +88,4 @@ class _ToDoTaskState extends State<ToDoTask> {
       ),
     );
   }
-  
 }

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 class ToDoInput extends StatelessWidget{
   final controller;
+  String labeltext = 'Create new task here';
+  void changeLabelText(String str){
+    this.labeltext = str;
+  }
   VoidCallback onSubmit;
   ToDoInput({
     super.key,
@@ -17,7 +21,7 @@ class ToDoInput extends StatelessWidget{
         controller: controller,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
-          labelText: 'Create new task here',
+          labelText: labeltext ,
         ),
         onSubmitted: (value){onSubmit();},
       ),
